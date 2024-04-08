@@ -1,9 +1,9 @@
 #type vertex
-#version 330 core
-layout (location=0) in vec3 aPos;
-layout (location=1) in vec4 aColor;
-layout (location=2) in vec2 aTexCoords;
-layout (location=3) in float aTexId;
+#version 420
+layout (location=0) in vec3 vPos;
+layout (location=1) in vec4 vColor;
+layout (location=2) in vec2 vTexCoords;
+layout (location=3) in float vTexId;
 
 uniform mat4 uProjection;
 uniform mat4 uView;
@@ -15,11 +15,11 @@ out float fTexId;
 
 void main()
 {
-    fColor = aColor;
-    fTexCoords = aTexCoords;
-    fTexId = aTexId;
+    fColor = vColor;
+    fTexCoords = vTexCoords;
+    fTexId = vTexId;
 
-    gl_Position = uProjection * uView * vec4(aPos, 1.0);
+    gl_Position = uProjection * uView * vec4(vPos, 1.0);
 }
 
 #type fragment
@@ -38,7 +38,6 @@ void main()
     if(fTexId > 0) {
         int id = int(fTexId);
         color = fColor * texture(uTextures[id], fTexCoords);
-        //color = vec4(fTexCoords, 0, 1); // (x,y,0,1)
     } else {
         color = fColor;
     }
