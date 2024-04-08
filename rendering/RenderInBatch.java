@@ -17,8 +17,8 @@ import static org.lwjgl.opengl.GL30.*;
 public class RenderInBatch implements Comparable<RenderInBatch>{
     //Vertex
     //
-    //Pos               Color                           tex coords          tex id
-    //float, float,     float, float, float, float      float, float        float
+    //Pos               Color                           tex coords          tex id      obj id
+    //float, float,     float, float, float, float      float, float        float       (float)int
 
     private final int POS_SIZE = 2;
     private final int COLOR_SIZE = 4;
@@ -234,6 +234,7 @@ public class RenderInBatch implements Comparable<RenderInBatch>{
             //texture id
             vertices[offset + 8] = texId;
 
+            // object unique id
             vertices[offset + 9] = sprite.gameObject.getUid();
 
             offset += VERTEX_SIZE;

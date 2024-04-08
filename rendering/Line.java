@@ -8,7 +8,7 @@ public class Line {
     private Vector2f from;
     private Vector2f to;
     private Vector3f color;
-    private int lifetime;
+    private int lifetime; 
 
     public Line(Vector2f from, Vector2f to) {
         this.from = from;

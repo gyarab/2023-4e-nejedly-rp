@@ -17,6 +17,9 @@ public class Draw {
     private static int MAX_LINES = 500;
 
     private static List<Line> lines = new ArrayList<>();
+    //float, float, float,      float, float, float A
+    //float float float         float float float B
+    //pos                        color
     // 6 floats pre vertex, 2 verticies per line
     private static float[] vertexArray = new float[MAX_LINES * 6 * 2];
     private static Shader shader = AssetPool.getShader("assets/shaders/LineShader.glsl");
@@ -40,7 +43,7 @@ public class Draw {
         glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * Float.BYTES, 3 * Float.BYTES);
         glEnableVertexAttribArray(1);
 
-        glLineWidth(2.0f);
+        glLineWidth(2.0f); // tloustka vykresele cary
 
     }
 
