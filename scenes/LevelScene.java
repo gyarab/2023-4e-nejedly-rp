@@ -17,11 +17,7 @@ public class LevelScene extends Scene {
         this.renderer.render();
     }
     Spritesheet sprites;
-
     GameObject levelComponents;
-    //PhysicsSystem physics = new PhysicsSystem( new Vector2f(0, -10), 1.0f / 60.0f);
-    //Transform obj1, obj2;
-    //Rigidbody2D rigidbody1, rigidbody2;
 
     @Override
     public void init() {

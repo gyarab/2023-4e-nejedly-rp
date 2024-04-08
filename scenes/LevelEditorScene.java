@@ -15,23 +15,10 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class LevelEditorScene extends Scene {
 
-    // private float[] vertexArray = {
-    //         //pos,              // color                    // texCoords Coordinates
-    //         100f,   0f, 0.0f,     1.0f, 0.0f, 0.0f, 1.0f,   1, 1, // bottom right cor 0
-    //           0f, 100f, 0.0f,     0.0f, 1.0f, 0.0f, 1.0f,   0, 0, // top left cor     1
-    //         100f, 100f, 0.0f,     0.0f, 0.0f, 1.0f, 1.0f,   1, 0, // top right cor    2
-    //           0f,   0f, 0.0f,     1.0f, 1.0f, 0.0f, 1.0f,   0, 1, // bottom left cor  3
-    // };
-
-
     Spritesheet sprites;
     protected GameObject activeGameObject = null;
 
-
     public GameObject levelEditorStuff = this.createGameObject("LeverEditor");
-    //PhysicsSystem physics = new PhysicsSystem( new Vector2f(0, -10), 1.0f / 60.0f);
-    //Transform obj1, obj2;
-    //Rigidbody2D rigidbody1, rigidbody2;
     public LevelEditorScene() {
 
     }
@@ -85,40 +72,6 @@ public class LevelEditorScene extends Scene {
         this.camera.adjustProjection();
         activeGameObject = levelEditorStuff.getComponent(MouseControls.class).getActiveObject();
 
-
-
-
-        //    DrawRender.addCircle(obj1.position,10.0f, new Vector3f(1, 0, 0));
-        //    DrawRender.addCircle(obj2.position,20.0f, new Vector3f(0.2f, 0.8f, 0.1f));
-        //    physics.update(dt);
-        //    DebugDraw.addCircle(new Vector2f(x, y), 64, new Vector3f(1, 0, 0), 1);
-        //    x += 50f *dt;
-        //    y += 50f *dt;
-        //    camera.position.x -= dt * 50.0f;
-        //    camera.position.y += dt * 50.f;
-
-        //   defaultShader.use();
-
-        //   defaultShader.uploadTexture("TEX_SAMPLER", 0);
-        //   glActiveTexture(GL_TEXTURE0);
-        //   testTexture.bind();
-
-        //   defaultShader.uploadMat4f("uProjection", camera.getProjectionMat());
-        //   defaultShader.uploadMat4f("uView", camera.getViewMat());
-        //   defaultShader.uploadFloat("uTime", Time.getTime());
-
-        //   glBindVertexArray(vaoID);
-
-        //   glEnableVertexAttribArray(0);
-        //   glEnableVertexAttribArray(1);
-
-        //   glDrawElements(GL_TRIANGLES, elementArray.length, GL_UNSIGNED_INT,0);
-
-        //   glDisableVertexAttribArray(0);
-        //   glDisableVertexAttribArray(1);
-
-        //    glBindVertexArray(0);
-        //    defaultShader.detach();
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject go = gameObjects.get(i);
             go.editUpdate(dt);
