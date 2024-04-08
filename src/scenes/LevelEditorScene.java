@@ -18,7 +18,7 @@ public class LevelEditorScene extends Scene {
     Spritesheet sprites;
     protected GameObject activeGameObject = null;
 
-    public GameObject levelEditorStuff = this.createGameObject("LeverEditor");
+    public GameObject levelEditor = this.createGameObject("LeverEditor");
     public LevelEditorScene() {
 
     }
@@ -31,13 +31,13 @@ public class LevelEditorScene extends Scene {
         Spritesheet pivotSpritesheet = AssetPool.getSpritesheet("assets/images/CenterAndArrows.png");
 
         this.camera = new Camera(new Vector2f(-250, 0));
-        levelEditorStuff.addComponent(new MouseControls());
-        levelEditorStuff.addComponent(new KeyControls());
-        levelEditorStuff.addComponent(new GridLines());
-        levelEditorStuff.addComponent(new EditorCamera(this.camera));
-        levelEditorStuff.addComponent(new PivotSystem(pivotSpritesheet));
+        levelEditor.addComponent(new MouseControls());
+        levelEditor.addComponent(new KeyControls());
+        levelEditor.addComponent(new GridLines());
+        levelEditor.addComponent(new EditorCamera(this.camera));
+        levelEditor.addComponent(new PivotSystem(pivotSpritesheet));
 
-        levelEditorStuff.start();
+        levelEditor.start();
     }
 
     @Override
@@ -68,9 +68,9 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void editUpdate(float dt) {
-        levelEditorStuff.editUpdate(dt);
+        levelEditor.editUpdate(dt);
         this.camera.adjustProjection();
-        activeGameObject = levelEditorStuff.getComponent(MouseControls.class).getActiveObject();
+        activeGameObject = levelEditor.getComponent(MouseControls.class).getActiveObject();
 
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject go = gameObjects.get(i);
@@ -104,8 +104,8 @@ public class LevelEditorScene extends Scene {
     public void imgui() {
         super.imgui();
 
-        ImGui.begin("Lever Editor Stuff");
-        levelEditorStuff.imgui();
+        ImGui.begin("Lever Editor");
+        levelEditor.imgui();
         ImGui.end();
 
         ImGui.begin("Objects");
@@ -144,7 +144,7 @@ public class LevelEditorScene extends Scene {
                         } else if (i == 2) {
                             object = GameObjGen.generateDefeatPosition(sprite);
                         }
-                            levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+                            levelEditor.getComponent(MouseControls.class).pickupObject(object);
                     }
                     ImGui.popID();
 
@@ -169,7 +169,7 @@ public class LevelEditorScene extends Scene {
                 ImGui.pushID("player");
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
                     GameObject object = GameObjGen.generatePlayer();
-                    levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+                    levelEditor.getComponent(MouseControls.class).pickupObject(object);
                 }
                 ImGui.sameLine();
                 ImGui.popID();
