@@ -25,7 +25,9 @@ public class Shader {
     public Shader(String filepath) {
         this.filepath = filepath;
         try {
+            // vyuzuti regularnich vyrazu k automatizaci
             String src = new String(Files.readAllBytes(Paths.get(filepath)));
+            // rozdel obsah shaderu podle #type
             String[] splitString = src.split("(#type)( )+([a-zA-Z]+)");
 
             // najde prvni pattern v shaderu po #type 'nazev patternu'
